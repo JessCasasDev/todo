@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import UserForm from "./components/User/UserForm";
+import UserList from "./components/UserList/UserList";
+import { useState } from "react";
 
 function App() {
+  const [userList, setUserList] = useState([]);
+
+  const userSubmitHandler = (event) => {
+    setUserList((prevVal) => {
+      return [...prevVal, event];
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserForm onSubmit={userSubmitHandler} />
+      {userList.length > 0 && <UserList usersList={userList} />}
     </div>
   );
 }
