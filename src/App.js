@@ -14,10 +14,10 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <>
       <UserForm onSubmit={userSubmitHandler} />
       {userList.length > 0 && <UserList usersList={userList} />}
-    </div>
+    </>
   );
 }
 
